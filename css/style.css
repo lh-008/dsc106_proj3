@@ -47,7 +47,13 @@ body {
 #background_info {
     padding: 1em;
     margin: 20px auto;
-    text-align: center;
-    line-height: 1.6;
+    text-align: left;
+    line-height: 1.5;
     font-family: inherit;
+    font-size: small;
+    max-width: 600px;
+    color: #333;
+    background-color: #f9f9f9;
+    border-left: 6px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
