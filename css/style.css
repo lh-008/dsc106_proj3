@@ -43,3 +43,11 @@ body {
     stroke-width: 1;
     opacity: 0;
 }
+
+#background_info {
+    padding: 1em;
+    margin: 20px auto;
+    text-align: center;
+    line-height: 1.6;
+    font-family: inherit;
+}
