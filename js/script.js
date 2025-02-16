@@ -132,21 +132,22 @@ function updateVisualization(selectedGender) {
 
 // Mousemove function for tooltips
 function mousemove(event, aggregated) {
-    const mouseX = d3.pointer(event)[0];
-    const minute = xScale.invert(mouseX);
+    const [mouseX] = d3.pointer(event, svg.node()); // Get the mouse X position
+    const minute = Math.round(xScale.invert(mouseX)); // Convert to the correct scale
 
     cursor.attr("x1", mouseX)
         .attr("x2", mouseX)
         .style("opacity", 1);
 
-    let tooltipHtml = `<strong>Minute: ${Math.round(minute)}</strong><br>`;
+    let tooltipHtml = `<strong>Minute: ${minute}</strong><br>`;
 
     d3.group(aggregated, d => d.sex).forEach((values, sex) => {
+        // Find the closest data point
         const sorted = values.sort((a, b) => a.minute - b.minute);
         const i = bisect(sorted, minute, 0);
         const d0 = i > 0 ? sorted[i - 1] : null;
         const d1 = i < sorted.length ? sorted[i] : null;
-        const d = !d0 ? d1 : !d1 ? d0 : minute - d0.minute > d1.minute - minute ? d1 : d0;
+        const d = !d0 ? d1 : !d1 ? d0 : (minute - d0.minute > d1.minute - minute ? d1 : d0);
 
         if (d) {
             tooltipHtml += `${sex}: ${d.activity.toFixed(1)}<br>`;
