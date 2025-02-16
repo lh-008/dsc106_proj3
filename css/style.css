@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+#controls {
+    margin-bottom: 20px;
+}
+
+.tooltip {
+    position: absolute;
+    padding: 8px;
+    background: white;
+    border: 1px solid #ddd;
+    pointer-events: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.grid line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.cursor {
+    stroke: #333;
+    stroke-width: 1;
+    opacity: 0;
+}
